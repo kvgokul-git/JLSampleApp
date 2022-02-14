@@ -1,7 +1,9 @@
 package com.gklabs.jlsampleapp.config
 
+import com.gklabs.jlsampleapp.BuildConfig
+
 object ConfigProviderImpl : BaseCommonConfigProvider() {
 
     override val apiBaseUrl =
-        "https://api.johnlewis.com"
+        BuildConfig.API_BASE_URL
 }
