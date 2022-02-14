@@ -16,7 +16,7 @@ object MoshiAdapterConfig {
             .build()
 
     private fun Moshi.Builder.addProductMappers() =
-        this.add(ProductListMapper)
-            .add(ProductMapper)
+        this.add(ProductMapper)
+            .add(ProductListMapper)
             .add(ProductDetailsMapper)
 }

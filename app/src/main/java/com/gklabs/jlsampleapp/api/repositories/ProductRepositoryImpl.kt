@@ -14,6 +14,6 @@ class ProductRepositoryImpl @Inject constructor(
         executeApiCall { productsApi.getProducts() }
 
     override suspend fun getProductDetails(productId: String): ProductDetailsResponse =
-        executeApiCall { productsApi.getProductDetails() }
+        executeApiCall { productsApi.getProductDetails(productId = productId) }
 
 }

@@ -5,6 +5,7 @@ import com.gklabs.jlsampleapp.api.dto.ProductDetailsResponse
 import com.gklabs.jlsampleapp.api.dto.ProductListResponse
 import retrofit2.http.GET
 import retrofit2.http.Header
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ProductsApi {
@@ -20,12 +21,18 @@ interface ProductsApi {
     suspend fun getProducts(
         @Header("User-Agent") agent: String = "PostmanRuntime/7.29.0",
         @Header("Accept") accept: String = "*/*",
-        @Header("Accept-Encoding") accepten: String = "gzip, deflate, br",
+        @Header("Accept-Encoding") acceptEncoding: String = "gzip, deflate, br",
         @Header("Connection") conn: String = "keep-alive",
         @Query("q") query: String = DEFAULT_SEARCH_QUERY,
         @Query("key") apiKey: String = BuildConfig.API_KEY
     ): ProductListResponse
 
     @GET(PRODUCT_DETAILS_ENDPOINT)
-    suspend fun getProductDetails(): ProductDetailsResponse
+    suspend fun getProductDetails(
+        @Header("User-Agent") agent: String = "PostmanRuntime/7.29.0",
+        @Header("Accept") accept: String = "*/*",
+        @Header("Accept-Encoding") acceptEncoding: String = "gzip, deflate, br",
+        @Header("Connection") conn: String = "keep-alive",
+        @Path("productId") productId: String
+    ): ProductDetailsResponse
 }
