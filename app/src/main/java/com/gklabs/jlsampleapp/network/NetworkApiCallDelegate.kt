@@ -36,7 +36,7 @@ internal class NetworkApiCallDelegateImpl @Inject constructor(
                 Type.Generic
             }
             throwable is HttpException -> {
-                Type.HttpError(throwable.code())
+                Type.HttpError(throwable.code(), throwable.message())
             }
             else -> {
                 Type.Generic

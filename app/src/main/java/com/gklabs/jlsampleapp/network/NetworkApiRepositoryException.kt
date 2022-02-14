@@ -18,7 +18,7 @@ class NetworkApiRepositoryException(val type: Type) : Exception() {
 sealed class Type {
 
     object Connection : Type()
-    data class HttpError(val errorCode: Int) : Type()
+    data class HttpError(val errorCode: Int, val errorMessage: String) : Type()
     object Generic : Type()
 }
 

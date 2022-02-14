@@ -51,7 +51,7 @@ class NetworkModule {
     @Provides
     @Singleton
     fun provideConverterFactory(moshi: Moshi): Converter.Factory =
-        MoshiConverterFactory.create(moshi)
+        MoshiConverterFactory.create(moshi).asLenient()
 
     @Provides
     @Singleton

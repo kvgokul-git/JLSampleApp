@@ -9,8 +9,8 @@ import com.squareup.moshi.ToJson
 internal object ProductListMapper {
 
     @FromJson
-    fun fromJson(productListResponse: ProductListResponse): List<Product> {
-        return productListResponse.products.map { ProductMapper.fromJson(it) }
+    fun fromJson(productListResponse: ProductListResponse): ProductListResponse {
+        return productListResponse
     }
 
     @ToJson
