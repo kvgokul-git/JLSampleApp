@@ -5,6 +5,6 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Details(
-    val features: List<Feature>,
+    //val features: List<Feature>,
     val productInformation: String
 ) : Parcelable

@@ -14,10 +14,8 @@ import androidx.compose.runtime.collectAsState
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.gklabs.jlsampleapp.model.ProductDetailsState
 import com.gklabs.jlsampleapp.model.ProductListState
 import com.gklabs.jlsampleapp.ui.theme.JLSampleAppTheme
-import com.gklabs.jlsampleapp.view.details_screen.JLProductDetails
 import com.gklabs.jlsampleapp.view.reusable_views.JLProductsGrid
 import com.gklabs.jlsampleapp.view.reusable_views.JLStandardProgressBar
 import com.gklabs.jlsampleapp.viewmodel.ProductDetailsViewModel
@@ -64,15 +62,15 @@ class MainActivity : ComponentActivity() {
                         }
                     }
                     composable(
-                        route = Screen.ProductDetails.route,
+                        route = Screen.ProductDetails.route.plus("/{productId}"),
                         arguments = detailsScreenArguments
                     ) { navBackStackEntry ->
 
-                        navBackStackEntry?.arguments?.getString(Screen.ProductDetails.route)?.let {
+                        navBackStackEntry.arguments?.getString("productId")?.let {
                             DefaultSurface {
                                 ProductDetailsWithViewModel(
                                     productDetailsViewModel = productDetailsViewModel,
-                                    selectedProduct = it
+                                    productId = it
                                 )
                             }
                         }
@@ -121,10 +119,11 @@ fun ProductsListWithViewModel(
 @Composable
 fun ProductDetailsWithViewModel(
     productDetailsViewModel: ProductDetailsViewModel,
-    selectedProduct: String
+    productId: String
 ) {
-    productDetailsViewModel.loadProductDetails(selectedProduct)
-
+    Text(text = "Selected Product ID : ".plus(productId))
+    //todo Debug the api call since we get network exception
+    /*productDetailsViewModel.loadProductDetails(productId)
     val currentState: State<ProductDetailsState> =
         productDetailsViewModel.viewState.collectAsState()
     when (val result = currentState.value) {
@@ -137,6 +136,6 @@ fun ProductDetailsWithViewModel(
             style = MaterialTheme.typography.body1,
             color = MaterialTheme.colors.onError
         )
-        //todo handle other states
-    }
+
+    }*/
 }

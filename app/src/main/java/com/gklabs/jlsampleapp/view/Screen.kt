@@ -20,7 +20,7 @@ sealed class Screen(val route: String) {
 val detailsScreenArguments = listOf(
     navArgument(PRODUCT_ID_KEY) {
         type = NavType.StringType
-        defaultValue = 1
+        defaultValue = "5087140"
     }
 )
 
