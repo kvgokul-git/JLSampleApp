@@ -14,17 +14,16 @@ import androidx.compose.runtime.collectAsState
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.gklabs.jlsampleapp.api.dto.Product
-import com.gklabs.jlsampleapp.model.ProductListState
 import com.gklabs.jlsampleapp.model.ProductDetailsState
+import com.gklabs.jlsampleapp.model.ProductListState
 import com.gklabs.jlsampleapp.ui.theme.JLSampleAppTheme
 import com.gklabs.jlsampleapp.view.details_screen.JLProductDetails
-import com.gklabs.jlsampleapp.view.reusable_views.JLStandardProgressBar
 import com.gklabs.jlsampleapp.view.reusable_views.JLProductsGrid
-import com.gklabs.jlsampleapp.viewmodel.ProductsListViewModel
-import com.gklabs.jlsampleapp.viewmodel.ProductsListViewModelFactory
+import com.gklabs.jlsampleapp.view.reusable_views.JLStandardProgressBar
 import com.gklabs.jlsampleapp.viewmodel.ProductDetailsViewModel
 import com.gklabs.jlsampleapp.viewmodel.ProductDetailsViewModelFactory
+import com.gklabs.jlsampleapp.viewmodel.ProductsListViewModel
+import com.gklabs.jlsampleapp.viewmodel.ProductsListViewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

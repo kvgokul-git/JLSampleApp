@@ -39,12 +39,7 @@ fun JLProductsGrid(productListResponse: ProductListResponse, jlAppNavigation: JL
             horizontalAlignment = Alignment.Start,
             verticalArrangement = Arrangement.Center
         ) {
-            Text(
-                text = "Products",
-                color = Color.Black,
-                fontSize = 20.sp,
-                fontWeight = FontWeight.Bold
-            )
+            PageHeader(heading = "Products")
         }
         LazyVerticalGrid(
             cells = GridCells.Adaptive(150.dp),
@@ -81,6 +76,18 @@ fun JLProductGridItem(product: Product, jlAppNavigation: JLAppNavigation) {
         CoilImage(url = product.image, contentDescription = product.productId)
         XXSmallSpacer()
         ProductPrice(price = product.price)
+    }
+}
+
+@Composable
+private fun PageHeader(heading: String?) {
+    heading?.let {
+        Text(
+            text = it,
+            style = MaterialTheme.typography.h4,
+            modifier = Modifier
+                .padding(horizontal = 16.dp)
+        )
     }
 }
 
