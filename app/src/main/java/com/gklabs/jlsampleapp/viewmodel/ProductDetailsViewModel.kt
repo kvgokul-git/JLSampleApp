@@ -18,10 +18,10 @@ class ProductDetailsViewModel(
         MutableStateFlow(ProductDetailsState.Loading)
     val viewState: StateFlow<ProductDetailsState> = _viewState
 
-    fun loadProductDetails(product: Product) {
+    fun loadProductDetails(product: String) {
         viewModelScope.launch {
             _viewState.value =
-                when (val result = productDetailsUseCase.execute(product.productId)) {
+                when (val result = productDetailsUseCase.execute(product)) {
                     is UseCaseResult.SuccessResult -> ProductDetailsState.Loaded(
                         result.value
                     )

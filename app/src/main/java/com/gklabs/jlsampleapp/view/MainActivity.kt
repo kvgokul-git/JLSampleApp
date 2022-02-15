@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -16,10 +17,10 @@ import androidx.navigation.compose.rememberNavController
 import com.gklabs.jlsampleapp.api.dto.Product
 import com.gklabs.jlsampleapp.model.ProductListState
 import com.gklabs.jlsampleapp.model.ProductDetailsState
-import com.gklabs.jlsampleapp.ui.theme.ComposeDemoTheme
-import com.gklabs.jlsampleapp.view.utils.reusable_views.JLStandardProgressBar
-import com.gklabs.jlsampleapp.view.details_screen.ProductDetailsScreen
-import com.gklabs.jlsampleapp.view.home_screen.ProductsListScreen
+import com.gklabs.jlsampleapp.ui.theme.JLSampleAppTheme
+import com.gklabs.jlsampleapp.view.details_screen.JLProductDetails
+import com.gklabs.jlsampleapp.view.reusable_views.JLStandardProgressBar
+import com.gklabs.jlsampleapp.view.reusable_views.JLProductsGrid
 import com.gklabs.jlsampleapp.viewmodel.ProductsListViewModel
 import com.gklabs.jlsampleapp.viewmodel.ProductsListViewModelFactory
 import com.gklabs.jlsampleapp.viewmodel.ProductDetailsViewModel
@@ -42,10 +43,11 @@ class MainActivity : ComponentActivity() {
         productDetailsViewModelFactory
     }
 
+    @ExperimentalFoundationApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ComposeDemoTheme {
+            JLSampleAppTheme {
 
                 val navController = rememberNavController()
                 val jlAppNavigation = JLAppNavigation(navController)
@@ -57,25 +59,26 @@ class MainActivity : ComponentActivity() {
                     composable(route = Screen.ProductListing.route) {
                         DefaultSurface {
                             ProductsListWithViewModel(
-                                jlAppNavigation.navigateToProductDetailsScreen,
+                                jlAppNavigation = jlAppNavigation,
                                 productsListViewModel
                             )
                         }
                     }
-                    /*composable(
-                        route = Screen.ProductDetails.route + "/{id}/{title}/{client}/{vertical}/{heroImageUrl}",
+                    composable(
+                        route = Screen.ProductDetails.route,
                         arguments = detailsScreenArguments
                     ) { navBackStackEntry ->
 
-                        navBackStackEntry.getProduct?.let { caseStudy ->
+                        navBackStackEntry?.arguments?.getString(Screen.ProductDetails.route)?.let {
                             DefaultSurface {
-                                StudyDetailsWithViewModel(
-                                    productDetailsViewModel,
-                                    caseStudy
+                                ProductDetailsWithViewModel(
+                                    productDetailsViewModel = productDetailsViewModel,
+                                    selectedProduct = it
                                 )
                             }
                         }
-                    }*/
+
+                    }
                     composable(route = "search") {
                         Surface(color = MaterialTheme.colors.background) {
                             Text(text = "Search results screen")
@@ -97,16 +100,17 @@ fun DefaultSurface(content: @Composable () -> Unit) {
     }
 }
 
+@ExperimentalFoundationApi
 @Composable
 fun ProductsListWithViewModel(
-    onProductClicked: (Product) -> Unit,
+    jlAppNavigation: JLAppNavigation,
     productsListViewModel: ProductsListViewModel
 ) {
     val currentState: State<ProductListState> = productsListViewModel.viewState.collectAsState()
     when (val result = currentState.value) {
-        is ProductListState.Loaded -> ProductsListScreen(
-            onProductClicked = onProductClicked,
-            productListResponse = result.productListResponse
+        is ProductListState.Loaded -> JLProductsGrid(
+            productListResponse = result.productListResponse,
+            jlAppNavigation = jlAppNavigation
         )
         is ProductListState.Loading -> JLStandardProgressBar()
         else -> Text(text = " Hello there is an error")
@@ -114,17 +118,18 @@ fun ProductsListWithViewModel(
     }
 }
 
+@ExperimentalFoundationApi
 @Composable
 fun ProductDetailsWithViewModel(
     productDetailsViewModel: ProductDetailsViewModel,
-    selectedProduct: Product
+    selectedProduct: String
 ) {
     productDetailsViewModel.loadProductDetails(selectedProduct)
 
     val currentState: State<ProductDetailsState> =
         productDetailsViewModel.viewState.collectAsState()
     when (val result = currentState.value) {
-        is ProductDetailsState.Loaded -> ProductDetailsScreen(
+        is ProductDetailsState.Loaded -> JLProductDetails(
             productDetailsResponse = result.productDetailsResponse
         )
         is ProductDetailsState.Loading -> Text(text = "Loading...")

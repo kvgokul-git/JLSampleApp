@@ -13,26 +13,20 @@ interface ProductsApi {
     companion object {
         const val PRODUCTS_LISTING_ENDPOINT = "/search/api/rest/v2/catalog/products/search/keyword"
         const val PRODUCT_DETAILS_ENDPOINT = "/mobile-apps/api/v1/products/"
-        const val HEADER_VALUE = "application/json"
+        const val DEFAULT_USER_AGENT = "PostmanRuntime/7.29.0"
         const val DEFAULT_SEARCH_QUERY = "dishwasher"
     }
 
     @GET(PRODUCTS_LISTING_ENDPOINT)
     suspend fun getProducts(
-        @Header("User-Agent") agent: String = "PostmanRuntime/7.29.0",
-        @Header("Accept") accept: String = "*/*",
-        @Header("Accept-Encoding") acceptEncoding: String = "gzip, deflate, br",
-        @Header("Connection") conn: String = "keep-alive",
+        @Header("User-Agent") agent: String = DEFAULT_USER_AGENT,
         @Query("q") query: String = DEFAULT_SEARCH_QUERY,
         @Query("key") apiKey: String = BuildConfig.API_KEY
     ): ProductListResponse
 
     @GET(PRODUCT_DETAILS_ENDPOINT)
     suspend fun getProductDetails(
-        @Header("User-Agent") agent: String = "PostmanRuntime/7.29.0",
-        @Header("Accept") accept: String = "*/*",
-        @Header("Accept-Encoding") acceptEncoding: String = "gzip, deflate, br",
-        @Header("Connection") conn: String = "keep-alive",
+        @Header("User-Agent") agent: String = DEFAULT_USER_AGENT,
         @Path("productId") productId: String
     ): ProductDetailsResponse
 }

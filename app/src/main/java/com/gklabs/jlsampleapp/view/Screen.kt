@@ -24,9 +24,3 @@ val detailsScreenArguments = listOf(
     }
 )
 
-/*val NavBackStackEntry.getProduct: Product?
-    get() = arguments?.let {
-        Product(
-            productId = it.getString(PRODUCT_ID_KEY)
-        )
-    }*/

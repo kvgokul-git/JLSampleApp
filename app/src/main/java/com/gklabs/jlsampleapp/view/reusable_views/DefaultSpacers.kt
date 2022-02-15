@@ -1,4 +1,4 @@
-package com.gklabs.jlsampleapp.view.utils
+package com.gklabs.jlsampleapp.view.reusable_views
 
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -8,7 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.gklabs.jlsampleapp.ui.theme.ComposeDemoTheme
+import com.gklabs.jlsampleapp.ui.theme.JLSampleAppTheme
 
 @Composable
 fun XXSmallSpacer() = Spacer(4.dp)
@@ -38,7 +38,7 @@ fun Spacer(height: Dp) = Spacer(
 @Preview
 @Composable
 private fun PreviewDarkSmallSpacer() {
-    ComposeDemoTheme(darkTheme = true) {
+    JLSampleAppTheme(darkTheme = true) {
         SmallSpacer()
     }
 }
@@ -46,7 +46,7 @@ private fun PreviewDarkSmallSpacer() {
 @Preview
 @Composable
 private fun PreviewLightSmallSpacer() {
-    ComposeDemoTheme(darkTheme = false) {
+    JLSampleAppTheme(darkTheme = false) {
         SmallSpacer()
     }
 }

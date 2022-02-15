@@ -2,24 +2,17 @@ package com.gklabs.jlsampleapp.view.details_screen
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.gklabs.jlsampleapp.api.dto.ProductDetailsResponse
-import com.gklabs.jlsampleapp.ui.theme.ComposeDemoTheme
-import com.gklabs.jlsampleapp.view.utils.image.CoilImage
-import com.gklabs.jlsampleapp.view.home_screen.ProductCardShort
-import com.gklabs.jlsampleapp.view.home_screen.ScreenTitle
-import com.gklabs.jlsampleapp.view.utils.SmallSpacer
-import com.gklabs.jlsampleapp.view.utils.XXSmallSpacer
-import com.gklabs.jlsampleapp.view.utils.productDetailsResponseForPreview
+import com.gklabs.jlsampleapp.ui.theme.JLSampleAppTheme
+import com.gklabs.jlsampleapp.view.reusable_views.productDetailsResponseForPreview
 
 @Composable
 fun ProductDetailsScreen(
@@ -81,7 +74,7 @@ private fun ComposeCaseSection(section: CaseStudySection) {
 @Preview
 @Composable
 private fun PreviewLightStudyDetailsScreen() {
-    ComposeDemoTheme(darkTheme = false) {
+    JLSampleAppTheme(darkTheme = false) {
         ProductDetailsScreen(
             productDetailsResponse = productDetailsResponseForPreview
         )
@@ -91,7 +84,7 @@ private fun PreviewLightStudyDetailsScreen() {
 @Preview
 @Composable
 private fun PreviewDarkStudyDetailsScreen() {
-    ComposeDemoTheme(darkTheme = true) {
+    JLSampleAppTheme(darkTheme = true) {
         ProductDetailsScreen(
             productDetailsResponse = productDetailsResponseForPreview
         )

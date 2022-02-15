@@ -1,4 +1,4 @@
-package com.gklabs.jlsampleapp.view.utils
+package com.gklabs.jlsampleapp.view.reusable_views
 
 import com.gklabs.jlsampleapp.api.dto.Price
 import com.gklabs.jlsampleapp.api.dto.Product

@@ -1,4 +1,4 @@
-package com.gklabs.jlsampleapp.view.utils.reusable_views
+package com.gklabs.jlsampleapp.view.reusable_views
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,7 +10,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import com.gklabs.jlsampleapp.ui.theme.ComposeDemoTheme
+import com.gklabs.jlsampleapp.ui.theme.JLSampleAppTheme
 
 
 @Composable
@@ -33,7 +33,7 @@ fun JLStandardProgressBar() {
 @Preview
 @Composable
 private fun PreviewLightStandardProgressBar() {
-    ComposeDemoTheme(darkTheme = false) {
+    JLSampleAppTheme(darkTheme = false) {
 
         JLStandardProgressBar()
     }
@@ -42,7 +42,7 @@ private fun PreviewLightStandardProgressBar() {
 @Preview
 @Composable
 private fun PreviewDarkStandardProgressBar() {
-    ComposeDemoTheme(darkTheme = true) {
+    JLSampleAppTheme(darkTheme = true) {
         JLStandardProgressBar()
     }
 }

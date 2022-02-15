@@ -1,4 +1,4 @@
-package com.gklabs.jlsampleapp.view.utils.reusable_views
+package com.gklabs.jlsampleapp.view.reusable_views
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,7 +10,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.gklabs.jlsampleapp.R
-import com.gklabs.jlsampleapp.ui.theme.ComposeDemoTheme
+import com.gklabs.jlsampleapp.ui.theme.JLSampleAppTheme
 
 @Composable
 fun LogoImage(
@@ -35,7 +35,7 @@ fun LogoImage(
 @Preview
 @Composable
 private fun PreviewLightLogoImage() {
-    ComposeDemoTheme(darkTheme = false) {
+    JLSampleAppTheme(darkTheme = false) {
         LogoImage(Modifier.wrapContentSize())
     }
 }
@@ -43,7 +43,7 @@ private fun PreviewLightLogoImage() {
 @Preview
 @Composable
 private fun PreviewDarkLogoImage() {
-    ComposeDemoTheme(darkTheme = true) {
+    JLSampleAppTheme(darkTheme = true) {
         LogoImage(Modifier.wrapContentSize())
     }
 }
