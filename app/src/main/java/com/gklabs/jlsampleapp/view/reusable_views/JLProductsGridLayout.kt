@@ -61,7 +61,7 @@ fun JLProductGridItem(product: Product, jlAppNavigation: JLAppNavigation) {
         }
         .padding(10.dp)
         .fillMaxWidth()
-        .height(250.dp),
+        .height(350.dp),
         elevation = 5.dp,
         shape = RoundedCornerShape(5.dp)
     ) {
@@ -70,12 +70,12 @@ fun JLProductGridItem(product: Product, jlAppNavigation: JLAppNavigation) {
             horizontalAlignment = Alignment.Start,
             verticalArrangement = Arrangement.Center
         ) {
+            ProductTitle(title = product.title)
+            XXSmallSpacer()
+            CoilImage(url = product.image, contentDescription = product.productId)
+            XXSmallSpacer()
+            ProductPrice(price = product.price)
         }
-        ProductTitle(title = product.title)
-        XXSmallSpacer()
-        CoilImage(url = product.image, contentDescription = product.productId)
-        XXSmallSpacer()
-        ProductPrice(price = product.price)
     }
 }
 
